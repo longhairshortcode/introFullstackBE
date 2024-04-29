@@ -9,7 +9,7 @@ const userController = require("../controllers/userController.js")
 router.post("/sign-up", userController.signUp)
 
 //http://localhost:2121/user/login
-router.get("/login", userController.login)
+router.post("/login", userController.login)
 
 
 const userRoutes = router

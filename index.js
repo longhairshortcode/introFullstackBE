@@ -18,7 +18,7 @@ const app = express()
 //3) Middleware - (intercepts and process all the requests and responses between FE and BE, acts as the middleman to make sure the info
 //flows in and out correctly) CORS AND JSON 
 //can reuse const allowedOrigins all the way to the end of app.use((cors...)) for any project.
-const allowedOrigins = ["http://localhost:5173"] 
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"] 
 app.use(cors(
     {
         origin: (origin, callback) => {
