@@ -8,13 +8,16 @@ module.exports = {
     //req is request coming from the FE, res is response being sent back from the Server to FE
     getSingleStudent: (req, res) => {
         const {id} = req.params
-        const studentId = req.params.id
+        // this is a diff way to write line 10-> const studentId = req.params.id
         console.log(id)
     },
 
     getAllStudents: async (req, res) => {
         try {
-            const allStudents = await studentRegisterSchema.find();
+            const userID = req.params.id
+            console.log(userID)
+            const allStudents = await studentRegisterSchema.find({userID});
+            console.log(allStudents)
             if (!allStudents) {
                 return res.status(404).json({
                     message: "No students found"
@@ -29,7 +32,7 @@ module.exports = {
 
     createSingleStudent: async (req, res) => {
         try{
-            const {studentID, name, email} = req.body 
+            const {studentID, name, email, userID} = req.body 
               const existingStudent = await studentRegisterSchema.findOne({
                 email: email
               })
@@ -38,11 +41,12 @@ module.exports = {
                     message: "This student already exists"
                 })
               }  
-              if ( studentID && name && email ) {
+              if ( studentID && name && email && userID) {
                 const newStudent = await studentRegisterSchema.create({
                     studentID: studentID,
                     name: name,
                     email: email,
+                    userID: userID,
                 })
                 if (newStudent) {
                     res.status(200).json(newStudent)

@@ -42,7 +42,7 @@ app.use("/student-register", studentRegisterRoutes)
 app.use("/user", userRoutes)
 
 //4) Connect DB & LISTEN TO PORT(Server Configuration) (create db project, put mongo string in .env, 1)const port, 2) connectDB function 3) call connectDB)
-const PORT = process.env.PORT || 2121
+const PORT = process.env.PORT || 2323
 
 
 
@@ -51,7 +51,7 @@ const connectDB = async () => { //start asynchronous function
     try{
         await mongoose.connect(MONGODB_STRING) // await connecting by the .connect method and the env item in ()
         app.listen(PORT, () => { //estalish port listening to
-            console.log("Connected to MongoDB and server is running on: 2121")
+            console.log(`Connected to MongoDB and server is running on: ${PORT} `)
         })
     }catch(Error){ // if error connecting, console it and do process... to stop code from allowing server to run inconsistently 
         console.log(Error)
