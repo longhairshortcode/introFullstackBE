@@ -73,14 +73,13 @@ module.exports = {
             }
             // Check if the student exists by calling api and method and studentID, then putting it 
             //in an if statement
-            const existingStudent = await studentRegisterSchema.findById({ _id : id });
+            const existingStudent = await studentRegisterSchema.findById({ _id: id});
     
             if (!existingStudent) {
                 return res.status(404).json({
                     message: "This student doesn't exist"
                 });
             }
-    
     
             // Update the student
             const updatedStudent = await studentRegisterSchema.findByIdAndUpdate(
