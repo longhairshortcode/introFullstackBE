@@ -43,7 +43,7 @@ app.use("/student-register", studentRegisterRoutes)
 app.use("/user", userRoutes)
 
 //4) Connect DB & LISTEN TO PORT(Server Configuration) (create db project, put mongo string in .env, 1)const port, 2) connectDB function 3) call connectDB)
-const PORT = process.env.PORT || 2323
+const PORT = process.env.PORT || 3000
 
 
 
